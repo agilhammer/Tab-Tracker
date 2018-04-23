@@ -2,19 +2,21 @@
   <div id="app">
     <v-app>
       <page-header />
-        <main>
-          <v-container fluid>
-            <router-view />
-          </v-container>
-        </main>
+
+      <main>
+        <v-container fluid>
+          <router-view></router-view>
+        </v-container>
+      </main>
     </v-app>
   </div>
 </template>
 
 <script>
 import PageHeader from '@/components/pages/Header.vue'
+
 export default {
-  name: 'App',
+  name: 'app',
   components: {
     PageHeader
   }
@@ -29,5 +31,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.danger-alert {
+  color: red;
 }
 </style>

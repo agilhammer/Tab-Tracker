@@ -1,31 +1,26 @@
 <template>
   <v-layout>
-     <v-flex xs6 offset-xs3>
-      <div class="white elevation-2">
-        <v-toolbar flat dense class="cyan" dark>
-          <v-toolbar-title>Login</v-toolbar-title>
-        </v-toolbar>
-
-        <div class="pl-4 pr-4 pt-2 pb-2">
-            <v-text-field
-            label="E-mail"
-            v-model="email" />
-            <br>
-            <v-text-field
-            label="Password"
-            type="password"
-            v-model="password"/>
-          <br>
-          <div class="error" v-html="error" />
-          <br>
-          <v-btn
-            class="cyan"
-            dark
-            @click="login">
-            Login
-          </v-btn>
-        </div>
-      </div>
+    <v-flex xs6 offset-xs3>
+      <panel title="Login">
+        <v-text-field
+        label="E-mail"
+        v-model="email" />
+        <br>
+        <v-text-field
+        label="Password"
+        type="password"
+        v-model="password"/>
+        <br>
+        <div class="danger-alert" v-html="error"
+        />
+        <br>
+        <v-btn
+          class="cyan"
+          dark
+          @click="login">
+          Login
+        </v-btn>
+      </panel>
     </v-flex>
   </v-layout>
 </template>
@@ -50,6 +45,9 @@ export default {
         this.error = null
         this.$store.dispatch('setToken', response.data.token)
         this.$store.dispatch('setUser', response.data.user)
+        this.$router.push({
+          name: 'songs'
+        })
       } catch (error) {
         this.error = error.response.data.error
       }
